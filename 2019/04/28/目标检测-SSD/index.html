@@ -99,24 +99,29 @@
 
 
 
-  <meta name="description" content="title: 机器学习date: 2019-03-27 18:05:49type: “categories” comments: false">
-<meta property="og:type" content="website">
+  <meta name="description" content="目标检测—-SSD​    从上文知，Yolo和SSD属于one-stage方法，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。 ​">
+<meta property="og:type" content="article">
 <meta property="og:title" content="xiangyuBaby&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/机器学习/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/目标检测-SSD/index.html">
 <meta property="og:site_name" content="xiangyuBaby&#39;s Blog">
-<meta property="og:description" content="title: 机器学习date: 2019-03-27 18:05:49type: “categories” comments: false">
+<meta property="og:description" content="目标检测—-SSD​    从上文知，Yolo和SSD属于one-stage方法，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。 ​">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-28T08:21:33.697Z">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-4e827b166ba5cbaa5ac8b428a32b885d_r.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=m%5Ctimes+n+%5Ctimes+p">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=3%5Ctimes+3+%5Ctimes+p">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-ea924e733676e0da534f677a97c98653_r.jpg">
+<meta property="og:updated_time" content="2019-03-01T10:06:26.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xiangyuBaby&#39;s Blog">
-<meta name="twitter:description" content="title: 机器学习date: 2019-03-27 18:05:49type: “categories” comments: false">
+<meta name="twitter:description" content="目标检测—-SSD​    从上文知，Yolo和SSD属于one-stage方法，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见Focal Loss），导致模型准确度稍低。 ​">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-4e827b166ba5cbaa5ac8b428a32b885d_r.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/机器学习/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/28/目标检测-SSD/">
 
 
 
@@ -334,45 +339,151 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/目标检测-SSD/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiangyuBaby">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiangyuBaby's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline"></h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <hr>
-<p>title: 机器学习<br>date: 2019-03-27 18:05:49<br>type: “categories”</p>
-<h2 id="comments-false"><a href="#comments-false" class="headerlink" title="comments: false"></a>comments: false</h2>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T16:25:12+08:00">2019-04-28</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="目标检测—-SSD"><a href="#目标检测—-SSD" class="headerlink" title="目标检测—-SSD"></a>目标检测—-SSD</h1><p>​    从上文知，Yolo和SSD属于<strong>one-stage方法</strong>，其主要思路是均匀地在图片的不同位置进行密集抽样，抽样时可以采用不同尺度和长宽比，然后利用CNN提取特征后直接进行分类与回归，整个过程只需要一步，所以其优势是速度快，但是均匀的密集采样的一个重要缺点是训练比较困难，这主要是因为正样本与负样本（背景）极其不均衡（参见<a href="http://link.zhihu.com/?target=https%3A//arxiv.org/abs/1708.02002" target="_blank" rel="noopener">Focal Loss</a>），导致模型准确度稍低。</p>
+<p>​    SSD算法，英文是Single Shot MultiBox Detector，Single shot指SSD算法属于one-stage方法，MultiBox说明SSD是多框预测，SSD算法在准确度和速度（除了SSD512）上都比Yolo要好很多。对于Faster R-CNN等<strong>two-stage方法</strong>，是先通过CNN得到候选框，然后再对候选框进行分类与回归，而Yolo与SSD可以一步到位完成检测。而相比于Yolo，SSD采用CNN来直接进行检测，而不是像Yolo那样在全连接层之后做检测。其实采用卷积直接做检测只是SSD相比Yolo的其中一个不同点，另外还有两个重要的改变，一是SSD提取了不同尺度的特征图来做检测，大尺度特征图（较靠前的特征图）可以用来检测小物体，而小尺度特征图（较靠后的特征图）用来检测大物体；二是SSD采用了不同尺度和长宽比的先验框（Prior boxes, Default boxes，在Faster R-CNN中叫做锚，Anchors）。Yolo算法缺点是难以检测小目标，而且定位不准，但是这几点重要改进使得SSD在一定程度上克服这些缺点。</p>
+<p>​    SSD和Yolo一样都是在前期采用一个CNN网络（SSD使用的是VGG-16前面的13层卷积操作）来进行检测，但是SSD在经过卷积网络以后选择了采用多尺度的特征图。SSD三大设计理念：</p>
+<h5 id="（1）、采用多尺度特征图用于检测"><a href="#（1）、采用多尺度特征图用于检测" class="headerlink" title="（1）、采用多尺度特征图用于检测"></a>（1）、采用多尺度特征图用于检测</h5><p>​    所谓多尺度是指采用大小不同的特征图，CNN网络一般前面的特征图比较大，后面会逐渐采用stride=2的卷积或者pool来降低特征图大小，这正如下图所示，一个比较大的特征图和一个比较小的特征图，它们都用来做检测。这样做的好处是比较大的特征图来用来检测相对较小的目标，而小的特征图负责检测大目标，如图所示，8x8的特征图可以划分更多的单元，但是其每个单元的先验框尺度比较小。</p>
+<p><img src="https://pic2.zhimg.com/v2-4e827b166ba5cbaa5ac8b428a32b885d_r.jpg" alt="preview"></p>
+<h5 id="（2）卷积网络之后的特征图用卷积进行检测"><a href="#（2）卷积网络之后的特征图用卷积进行检测" class="headerlink" title="（2）卷积网络之后的特征图用卷积进行检测"></a>（2）卷积网络之后的特征图用卷积进行检测</h5><p>​    与Yolo最后采用全连接层不同，SSD直接采用卷积对不同的特征图来进行提取检测结果。对于形状为 <img src="https://www.zhihu.com/equation?tex=m%5Ctimes+n+%5Ctimes+p" alt="m\times n \times p"> 的特征图，只需要采用 <img src="https://www.zhihu.com/equation?tex=3%5Ctimes+3+%5Ctimes+p" alt="3\times 3 \times p"> 这样比较小的卷积核得到检测值。</p>
+<h5 id="（3）设置先验框"><a href="#（3）设置先验框" class="headerlink" title="（3）设置先验框"></a>（3）设置先验框</h5><h4 id="SSD网络结构"><a href="#SSD网络结构" class="headerlink" title="SSD网络结构"></a>SSD网络结构</h4><p>SSD采用VGG16作为基础模型，然后在VGG16的基础上新增了卷积层来获得更多的特征图以用于检测。</p>
+<p>关于VGG-16</p>
+<p><img src="https://pic4.zhimg.com/v2-ea924e733676e0da534f677a97c98653_r.jpg" alt="preview"></p>
+<p>上图中的D列就是VGG-16的网络结构，有13个卷积层和3个全连接层，相对的，E列其实就是VGG-19的结构，可以使用<a href="https://mp.weixin.qq.com/s/gktWxh1p2rR2Jz-A7rs_UQ" target="_blank" rel="noopener">经典神经网络（CNN）结构可视化工具</a>来查看高清无码的<a href="https://dgschwend.github.io/netscope/#/preset/vgg-16" target="_blank" rel="noopener">VGG16网络</a></p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/win10-python3-6，安装tensorflow-gpu/" rel="next" title="win10+python3.6，安装tensorflow-gpu">
+                <i class="fa fa-chevron-left"></i> win10+python3.6，安装tensorflow-gpu
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -493,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#comments-false"><span class="nav-number">1.</span> <span class="nav-text">comments: false</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目标检测—-SSD"><span class="nav-number">1.</span> <span class="nav-text">目标检测—-SSD</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（1）、采用多尺度特征图用于检测"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">（1）、采用多尺度特征图用于检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（2）卷积网络之后的特征图用卷积进行检测"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">（2）卷积网络之后的特征图用卷积进行检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（3）设置先验框"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">（3）设置先验框</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSD网络结构"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">SSD网络结构</span></a></li></ol></div>
             
 
           </div>
